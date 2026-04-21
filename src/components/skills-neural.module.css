@@ -1,0 +1,241 @@
+.skillsNeural {
+  min-height: 86vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background,
+.floatingParticles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  top: 85%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent 65%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.titleAccent {
+  background: linear-gradient(135deg, #22d3ee 0%, #f43f5e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  margin: 0.8rem auto 0;
+  max-width: 560px;
+  color: #94a3b8;
+}
+
+.networkContainer {
+  position: relative;
+  width: min(1020px, 99%);
+  height: clamp(270px, 50vw, 440px);
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.connections {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.node {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+
+.nodeCore {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  background: var(--node-color);
+  box-shadow: 0 0 20px var(--node-color);
+  position: relative;
+  z-index: 3;
+}
+
+.nodeGlow {
+  position: absolute;
+  inset: 8px;
+  border-radius: 999px;
+  background: var(--node-color);
+  filter: blur(10px);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.nodePulse {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  border: 2px solid var(--node-color);
+  animation: pulseRing 2.8s ease-out infinite;
+  z-index: 2;
+}
+
+.nodeName {
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #e5e7eb;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.nodeDetails {
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(300px, 86vw);
+  border: 1px solid;
+  border-radius: 14px;
+  background: rgba(7, 10, 16, 0.92);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  padding: 0.75rem;
+  z-index: 30;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.detailsIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 2px solid;
+  font-size: 0.95rem;
+}
+
+.detailsTitle h3 {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.detailsCategory {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+}
+
+.skillLevel {
+  margin-left: auto;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.skillProgress {
+  margin-top: 0.55rem;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+}
+
+.skillDescription {
+  margin-top: 0.55rem;
+  color: #9ca3af;
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.legend {
+  margin: 1.3rem auto 0;
+  width: min(720px, 98%);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+.legend h4 { color: #fff; text-align: center; margin-bottom: 0.7rem; }
+.legendItems { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.legendItem { display: flex; align-items: center; gap: 0.4rem; color: #cbd5e1; font-size: 0.85rem; }
+.legendDot { width: 10px; height: 10px; border-radius: 999px; }
+
+.frontend { --node-color: #61dafb; }
+.backend { --node-color: #68a063; }
+.database { --node-color: #47a248; }
+.devops { --node-color: #2496ed; }
+.tools { --node-color: #f05032; }
+
+.legendDot.frontend { background: #61dafb; }
+.legendDot.backend { background: #68a063; }
+.legendDot.database { background: #47a248; }
+.legendDot.devops { background: #2496ed; }
+.legendDot.tools { background: #f05032; }
+
+@keyframes pulseRing {
+  from { transform: scale(0.85); opacity: 0.9; }
+  to { transform: scale(1.45); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .node { width: 54px; height: 54px; }
+  .nodeCore { width: 34px; height: 34px; font-size: 1rem; }
+  .nodePulse { width: 46px; height: 46px; }
+  .nodeName { font-size: 0.62rem; }
+  .networkContainer { width: min(100%, 96vw); height: clamp(230px, 56vw, 320px); }
+  .nodeDetails { width: min(240px, 80vw); }
+}
