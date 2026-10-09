@@ -59,7 +59,7 @@
 .networkContainer {
   position: relative;
   width: min(1020px, 99%);
-  height: clamp(270px, 50vw, 440px);
+  height: clamp(260px, 48vw, 432px);
   margin: 0 auto;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -236,6 +236,6 @@
   .nodeCore { width: 34px; height: 34px; font-size: 1rem; }
   .nodePulse { width: 46px; height: 46px; }
   .nodeName { font-size: 0.62rem; }
-  .networkContainer { width: min(100%, 96vw); height: clamp(230px, 56vw, 320px); }
+  .networkContainer { width: min(100%, 96vw); height: clamp(220px, 54vw, 320px); }
   .nodeDetails { width: min(240px, 80vw); }
 }

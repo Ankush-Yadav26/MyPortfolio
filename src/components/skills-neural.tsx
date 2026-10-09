@@ -2,8 +2,8 @@
 
 import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaCss3Alt, FaGitAlt, FaHtml5, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
-import { SiExpress, SiMongodb, SiPostman, SiPython, SiRedux, SiTailwindcss } from "react-icons/si";
+import { FaCss3Alt, FaDocker, FaGitAlt, FaHtml5, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { SiExpress, SiMongodb, SiNextdotjs, SiOpenai, SiPostgresql, SiPostman, SiRedux, SiTailwindcss } from "react-icons/si";
 import styles from "./skills-neural.module.css";
 
 type Category = "frontend" | "backend" | "database" | "tools";
@@ -12,35 +12,41 @@ type PositionedSkill = Skill & { x: number; y: number };
 type Connection = { from: number; to: number; strength: number };
 
 const SKILLS: Skill[] = [
-  { id: 1, name: "React", icon: <FaReact />, category: "frontend", level: 90, description: "Building dynamic interfaces with reusable components and modern React patterns.", color: "#61DAFB" },
-  { id: 3, name: "Node.js", icon: <FaNodeJs />, category: "backend", level: 88, description: "Developing scalable server-side applications and RESTful services.", color: "#68A063" },
-  { id: 4, name: "Express.js", icon: <SiExpress />, category: "backend", level: 86, description: "Designing robust backend APIs and middleware pipelines.", color: "#2f2f2f" },
-  { id: 5, name: "MongoDB", icon: <SiMongodb />, category: "database", level: 82, description: "NoSQL schema design and performant query patterns.", color: "#47A248" },
-  { id: 6, name: "JavaScript", icon: <FaJs />, category: "frontend", level: 90, description: "Writing modern, efficient, and dynamic application logic.", color: "#F7DF1E" },
-  { id: 7, name: "Redux", icon: <SiRedux />, category: "frontend", level: 82, description: "Managing predictable state for complex interface flows.", color: "#764ABC" },
-  { id: 8, name: "HTML5", icon: <FaHtml5 />, category: "frontend", level: 95, description: "Building semantic and accessible structure for modern UIs.", color: "#E34F26" },
-  { id: 9, name: "CSS3", icon: <FaCss3Alt />, category: "frontend", level: 91, description: "Crafting responsive layouts, effects, and polished styling systems.", color: "#1572B6" },
-  { id: 10, name: "Tailwind CSS", icon: <SiTailwindcss />, category: "frontend", level: 89, description: "Building utility-first design systems and fast UI iterations.", color: "#38B2AC" },
-  { id: 12, name: "Git", icon: <FaGitAlt />, category: "tools", level: 92, description: "Version control and collaborative branching workflows.", color: "#F05032" },
-  { id: 13, name: "Postman", icon: <SiPostman />, category: "tools", level: 84, description: "API testing, debugging, and request collection management.", color: "#FF6C37" },
-  { id: 14, name: "Python", icon: <SiPython />, category: "backend", level: 80, description: "Scripting, automation, and backend utility tooling.", color: "#3776AB" },
+  { id: 1,  name: "React",       icon: <FaReact />,      category: "frontend", level: 90, description: "Building dynamic interfaces with reusable components and modern React patterns.",     color: "#61DAFB" },
+  { id: 3,  name: "Node.js",     icon: <FaNodeJs />,     category: "backend",  level: 88, description: "Developing scalable server-side applications and RESTful services.",                color: "#68A063" },
+  { id: 4,  name: "Express.js",  icon: <SiExpress />,    category: "backend",  level: 86, description: "Designing robust backend APIs and middleware pipelines.",                           color: "#ffffff" },
+  { id: 5,  name: "MongoDB",     icon: <SiMongodb />,    category: "database", level: 82, description: "NoSQL schema design and performant query patterns.",                                color: "#47A248" },
+  { id: 6,  name: "JavaScript",  icon: <FaJs />,         category: "frontend", level: 90, description: "Writing modern, efficient, and dynamic application logic.",                        color: "#F7DF1E" },
+  { id: 7,  name: "Redux",       icon: <SiRedux />,      category: "frontend", level: 82, description: "Managing predictable state for complex interface flows.",                          color: "#764ABC" },
+  { id: 8,  name: "HTML5",       icon: <FaHtml5 />,      category: "frontend", level: 95, description: "Building semantic and accessible structure for modern UIs.",                       color: "#E34F26" },
+  { id: 9,  name: "CSS3",        icon: <FaCss3Alt />,    category: "frontend", level: 91, description: "Crafting responsive layouts, effects, and polished styling systems.",              color: "#1572B6" },
+  { id: 10, name: "Tailwind CSS",icon: <SiTailwindcss />,category: "frontend", level: 89, description: "Building utility-first design systems and fast UI iterations.",                    color: "#38B2AC" },
+  { id: 12, name: "Git",         icon: <FaGitAlt />,     category: "tools",    level: 92, description: "Version control and collaborative branching workflows.",                           color: "#F05032" },
+  { id: 13, name: "Postman",     icon: <SiPostman />,    category: "tools",    level: 84, description: "API testing, debugging, and request collection management.",                       color: "#FF6C37" },
+  { id: 15, name: "Docker",      icon: <FaDocker />,     category: "tools",    level: 78, description: "Containerising applications for consistent dev and production environments.",       color: "#2496ED" },
+  { id: 16, name: "PostgreSQL",  icon: <SiPostgresql />, category: "database", level: 80, description: "Relational database design, queries, and schema management.",                      color: "#336791" },
+  { id: 17, name: "OpenAI",      icon: <SiOpenai />,     category: "tools",    level: 76, description: "Integrating GPT models and AI APIs into production applications.",                  color: "#10A37F" },
+  { id: 19, name: "Next.js",     icon: <SiNextdotjs />,  category: "frontend", level: 83, description: "Full-stack React framework for production-grade web applications.",                  color: "#e5e7eb" },
 ];
 
-// Organic zigzag layout — scattered but balanced, y capped at 0.72 so nothing overflows
+// Organic zigzag layout — 15 nodes, y capped within 0.88
 const POSITIONS = [
-  { x: 0.12, y: 0.14 }, { x: 0.35, y: 0.22 }, { x: 0.58, y: 0.10 }, { x: 0.82, y: 0.20 },
-  { x: 0.22, y: 0.44 }, { x: 0.50, y: 0.38 }, { x: 0.74, y: 0.46 },
-  { x: 0.10, y: 0.70 }, { x: 0.36, y: 0.62 }, { x: 0.60, y: 0.72 }, { x: 0.84, y: 0.64 },
-  { x: 0.48, y: 0.56 },
+  { x: 0.08, y: 0.10 }, { x: 0.32, y: 0.14 }, { x: 0.58, y: 0.08 }, { x: 0.82, y: 0.14 },
+  { x: 0.18, y: 0.34 }, { x: 0.44, y: 0.28 }, { x: 0.70, y: 0.36 },
+  { x: 0.07, y: 0.58 }, { x: 0.33, y: 0.52 }, { x: 0.58, y: 0.60 }, { x: 0.83, y: 0.52 },
+  { x: 0.18, y: 0.80 }, { x: 0.42, y: 0.84 }, { x: 0.66, y: 0.78 }, { x: 0.84, y: 0.82 },
 ];
 
 const CONNECTIONS: Connection[] = [
-  { from: 1, to: 3, strength: 0.82 }, { from: 3, to: 4, strength: 0.9 }, { from: 3, to: 5, strength: 0.85 },
-  { from: 4, to: 5, strength: 0.8 }, { from: 1, to: 6, strength: 0.95 }, { from: 1, to: 7, strength: 0.75 },
-  { from: 6, to: 8, strength: 0.9 }, { from: 6, to: 9, strength: 0.9 }, { from: 8, to: 9, strength: 0.95 },
-  { from: 8, to: 10, strength: 0.7 }, { from: 9, to: 10, strength: 0.7 }, { from: 3, to: 12, strength: 0.8 },
-  { from: 4, to: 12, strength: 0.7 }, { from: 3, to: 13, strength: 0.7 }, { from: 14, to: 3, strength: 0.6 },
-  { from: 14, to: 5, strength: 0.5 },
+  { from: 1,  to: 3,  strength: 0.82 }, { from: 3,  to: 4,  strength: 0.90 }, { from: 3,  to: 5,  strength: 0.85 },
+  { from: 4,  to: 5,  strength: 0.80 }, { from: 1,  to: 6,  strength: 0.95 }, { from: 1,  to: 7,  strength: 0.75 },
+  { from: 6,  to: 8,  strength: 0.90 }, { from: 6,  to: 9,  strength: 0.90 }, { from: 8,  to: 9,  strength: 0.95 },
+  { from: 8,  to: 10, strength: 0.70 }, { from: 9,  to: 10, strength: 0.70 }, { from: 3,  to: 12, strength: 0.80 },
+  { from: 4,  to: 12, strength: 0.70 }, { from: 3,  to: 13, strength: 0.70 },
+  { from: 3,  to: 15, strength: 0.78 }, { from: 4,  to: 15, strength: 0.65 }, { from: 15, to: 16, strength: 0.72 },
+  { from: 5,  to: 16, strength: 0.75 }, { from: 3,  to: 16, strength: 0.70 },
+  { from: 17, to: 3,  strength: 0.75 }, { from: 17, to: 4,  strength: 0.72 }, { from: 17, to: 1,  strength: 0.68 },
+  { from: 19, to: 1,  strength: 0.90 }, { from: 19, to: 3,  strength: 0.80 }, { from: 19, to: 6,  strength: 0.85 },
 ];
 
 export function SkillsNeural() {

@@ -73,10 +73,12 @@ export function HeroSection({ greeting }: HeroSectionProps) {
               View Projects
             </a>
             <a
-              href="#contact"
+              href="https://drive.google.com/file/d/1pae558QcLk1eRAj7Dh6syQSrDGtqb-Fk/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
               className="rounded-xl border border-white/15 bg-white/5 px-7 py-3 font-semibold text-white transition hover:bg-white/10"
             >
-              Hire Me
+              Resume
             </a>
           </div>
         </motion.div>

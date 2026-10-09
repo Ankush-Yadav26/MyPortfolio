@@ -48,7 +48,7 @@ export function Footer({ clockText }: FooterProps) {
             ))}
           </div>
           <div className="grid grid-cols-3 gap-3">
-            {["8+ Projects", "25+ APIs", "97% Quality"].map((stat) => (
+            {["8+ Projects", "60+ APIs", "97% Quality"].map((stat) => (
               <div key={stat} className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center text-sm text-gray-200">
                 {stat}
               </div>

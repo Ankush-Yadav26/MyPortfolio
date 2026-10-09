@@ -36,7 +36,7 @@ export const PHILOSOPHY_ITEMS = [
 
 export const STATS = [
   { label: "Projects Completed", value: "8+" },
-  { label: "APIs Integrated", value: "25+" },
+  { label: "APIs Integrated", value: "60+" },
   { label: "Code Quality", value: "97%" },
   { label: "Experience", value: "1+ Years" },
 ];
@@ -80,27 +80,27 @@ export const PROJECTS = [
     image: "/medicare-screenshot.png",
     stack: ["React", "Node.js", "MongoDB", "Express", "JWT", "Stripe", "+3"],
     demo: "https://medi-care-gray.vercel.app",
-    code: "#",
+    code: "https://github.com/Ankush-Yadav26/MediCare",
   },
   {
     tag: "fullstack",
-    title: "FitCore — Gym Management System",
+    title: "MediKiosk",
     description:
-      "A full-stack gym management platform with role-based dashboards for Admin, Trainer & Members. Features include membership plans, subscription tracking, attendance management via QR/OCR, trainer assignments, and a responsive glassmorphism UI.",
-    image: "/fitcore-screenshot.png",
-    stack: ["React", "Node.js", "MongoDB", "Tailwind CSS", "Clerk Auth", "Express.js", "+4"],
-    demo: "https://fit-core-nine.vercel.app",
-    code: "#",
+      "An intelligent healthcare triage platform that structures patient symptoms and prescriptions into a doctor-ready brief in under 90 seconds. Features a Doctor Portal, Patient Sign-In, Google-rated consultation booking, and real-time clinical triage powered by AI.",
+    image: "/medikiosk-screenshot.jpg",
+    stack: ["React", "Node.js", "Express", "MongoDB", "OpenAI API", "Tailwind CSS", "+3"],
+    demo: "#",
+    code: "https://github.com/Ankush-Yadav26/MediKiosk",
   },
   {
-    tag: "frontend",
-    title: "ShopCart — Shopping Cart App",
+    tag: "fullstack",
+    title: "Let The Crowd Decide",
     description:
-      "A responsive e-commerce shopping cart application with product listing, cart management, dynamic pricing, and a smooth checkout flow. Built as a frontend project focusing on React state management and component architecture.",
-    image: "/shopcart-screenshot.png",
-    stack: ["React", "CSS", "JavaScript", "React Router"],
-    demo: "#",
-    code: "#",
+      "A real-time crowd polling platform where users can create polls, share them, and watch results take shape live. Features live poll tracking, expiry management, top-choice analytics, and a clean minimalist UI designed for high engagement.",
+    image: "/letcrowddecide-screenshot.jpg",
+    stack: ["React", "Node.js", "MongoDB", "Socket.io", "Express", "REST API", "+2"],
+    demo: "https://let-the-crowd-decide.vercel.app/",
+    code: "https://github.com/Ankush-Yadav26/Let-The-Crowd-Decide",
   },
 ];
 
@@ -116,14 +116,14 @@ export const TESTIMONIALS = [
   {
     quote:
       "Strong technical depth and design sense. The final product felt fast, polished, and exactly aligned with our vision.",
-    name: "Ritika Anand",
-    role: "Product Manager",
+    name: "Varis",
+    role: "Full Stack Developer",
   },
   {
     quote:
       "Clear communication, clean code, and premium execution. I would absolutely work with him again on future products.",
-    name: "Nishant Verma",
-    role: "Startup Founder",
+    name: "Anmol",
+    role: "Java Developer",
   },
 ];
 

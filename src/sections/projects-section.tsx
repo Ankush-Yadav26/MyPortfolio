@@ -51,14 +51,23 @@ export function ProjectsSection() {
               <div className="flex gap-3 pt-2">
                 <a
                   href={project.demo}
-                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-rose-500 px-4 py-2 text-sm font-semibold text-white"
+                  target={project.demo !== "#" ? "_blank" : undefined}
+                  rel={project.demo !== "#" ? "noopener noreferrer" : undefined}
+                  onClick={project.demo === "#" ? (e) => e.preventDefault() : undefined}
+                  className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold ${
+                    project.demo === "#"
+                      ? "cursor-not-allowed border border-white/10 bg-white/5 text-gray-400"
+                      : "bg-gradient-to-r from-cyan-500 to-rose-500 text-white transition hover:opacity-90"
+                  }`}
                 >
                   <ExternalLink className="size-4" />
                   Live Demo
                 </a>
                 <a
                   href={project.code}
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   <GitBranch className="size-4" />
                   Source

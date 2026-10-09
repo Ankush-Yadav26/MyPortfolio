@@ -47,11 +47,11 @@ export function ContactSection() {
           <div className="mt-7 space-y-3">
             <p className="inline-flex items-center gap-2 text-gray-200">
               <Mail className="size-4 text-cyan-300" />
-              ankushy4002@gamil.com
+              ankush.ahir08@gmail.com
             </p>
             <p className="inline-flex items-center gap-2 text-gray-200">
               <Phone className="size-4 text-cyan-300" />
-              +91 98765 43210
+              <span>+91 70817 69055</span>
             </p>
             <p className="inline-flex items-center gap-2 text-gray-200">
               <Clock3 className="size-4 text-cyan-300" />
